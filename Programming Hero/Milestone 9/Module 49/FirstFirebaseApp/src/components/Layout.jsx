@@ -2,7 +2,7 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
 
-function App() {
+function Layout() {
   return (
     <div className="layout">
       <Sidebar />
@@ -13,4 +13,4 @@ function App() {
   );
 }
 
-export default App;
+export default Layout;
