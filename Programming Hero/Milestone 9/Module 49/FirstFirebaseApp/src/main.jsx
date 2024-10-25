@@ -7,12 +7,14 @@ import Education from "./components/Education";
 import Experience from "./components/Experience";
 import Project from "./components/Project";
 import "./index.css";
+import Home from "./components/Home";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
     children: [
+      { path: "home", element: <Home /> },
       { path: "about", element: <About /> },
       { path: "education", element: <Education /> },
       { path: "experience", element: <Experience /> },
