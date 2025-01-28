@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const RefForm = () => {
   const [formData, setFormData] = useState({
@@ -28,10 +30,16 @@ const RefForm = () => {
     e.preventDefault();
     const newErrors = validate();
     if (Object.keys(newErrors).length === 0) {
-      console.log(formData);
-      alert("Form submitted successfully!");
+      toast.success("Form submitted successfully!", {
+        position: "top-right",
+        autoClose: 3000,
+      });
       setFormData({ name: "", email: "", password: "" });
     } else {
+      toast.error("Please fix the errors before submitting.", {
+        position: "top-right",
+        autoClose: 3000,
+      });
       setErrors(newErrors);
     }
   };
@@ -148,6 +156,9 @@ const RefForm = () => {
           </button>
         </div>
       </form>
+
+      {/* Toast Container */}
+      <ToastContainer />
     </div>
   );
 };
