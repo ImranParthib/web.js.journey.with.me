@@ -1,10 +1,10 @@
 import "./App.css";
-import RefFrom from "./components/RefFrom/RefFrom";
+import Form from "./components/From/From";
 
 function App() {
   return (
     <>
-      <RefFrom />
+      <Form />
     </>
   );
 }
