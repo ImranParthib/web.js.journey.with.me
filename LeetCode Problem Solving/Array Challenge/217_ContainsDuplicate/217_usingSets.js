@@ -11,10 +11,11 @@
 
 var containsDuplicate = function (nums) {
     const set = new Set(nums)
-    if (set.size != nums.length) {
-        return false
-    }
-    return true
+    return set.size !== nums.length
+    // if (set.size != nums.length) {
+    //     return false
+    // }
+    // return true
 };
 
 const nums = [1, 2, 3, 1];
