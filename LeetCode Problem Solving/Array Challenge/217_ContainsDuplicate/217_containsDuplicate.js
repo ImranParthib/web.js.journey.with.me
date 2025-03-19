@@ -1,5 +1,11 @@
-/**
- * There is a time complexity here when the arrau of nums will be long
+/*
+  # 217_usingSets.js 
+  #Author: Imran Parthib
+  #Time:12:26AM : March 20, 2025
+
+ * This is a simple problem that can be solved using brute force.
+ * Pros: The solution is simple and easy to understand.
+ * Cons: The time complexity of this solution is O(n^2) which is not efficient.
  */
 
 /**
@@ -24,7 +30,6 @@ var containsDuplicate = function (nums) {
         return false;
     }
 };
-
 const nums = [1, 2, 3, 1];
 console.log(containsDuplicate(nums))
 
