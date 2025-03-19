@@ -1,11 +1,6 @@
-/**
- * @return {Function}
- */
-var createHelloWorld = function () {
-  return function (...args) {
-    return "Hello World";
-  };
-};
+function Hello() {
+  return "Hello World";
+}
 
-const f = createHelloWorld();
-f();
+const output = Hello();
+console.log(output);
