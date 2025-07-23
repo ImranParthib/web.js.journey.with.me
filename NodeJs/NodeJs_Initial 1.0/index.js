@@ -1,11 +1,13 @@
-const devName = "Imran Parthib";
-console.log(devName);
-let a = true;
+const http = require('http');
 
-if (a == 1) {
-    console.log("No");
-}
-else {
-    console.log("Noob");
-}
-console.log(a);
+const PORT = process.env.PORT || 3000;
+
+const server = http.createServer((req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/plain');
+    res.end('Hello, Node.js server is running!\n');
+});
+
+server.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}/`);
+});
