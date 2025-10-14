@@ -1,12 +1,17 @@
-import React from "react";
-
-const Card = ({ user }) => {
+const Card = ({ users }) => {
   return (
-    <div className="max-w-sm w-full mx-auto bg-white shadow-md rounded-lg overflow-hidden border border-gray-200 p-4 mb-4 hover:shadow-lg transition-shadow duration-300">
-      <div className="text-center">
-        <p className="text-sm text-gray-500">User ID: {user.id}</p>
-        <h3 className="text-lg font-semibold text-gray-800">{user.name}</h3>
-      </div>
+    <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-6">
+      {users.map((user) => (
+        <div
+          key={user.id}
+          className="bg-white rounded-xl shadow-md p-6 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 text-center"
+        >
+          <h3 className="text-lg font-semibold text-gray-800 mb-2">
+            {user.name}
+          </h3>
+          <p className="text-gray-500">{user.role}</p>
+        </div>
+      ))}
     </div>
   );
 };

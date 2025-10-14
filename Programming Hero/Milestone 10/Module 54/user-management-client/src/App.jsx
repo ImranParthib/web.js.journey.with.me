@@ -1,16 +1,20 @@
-import "./App.css";
 import Users from "./componenets/Users/Users";
 
 function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-100 to-white py-10 px-4">
-      <header className="text-center mb-10">
-        <h1 className="text-4xl font-extrabold text-blue-700 drop-shadow-sm">
-          Welcome to User Management
+    <div className="min-h-screen bg-gray-100 p-6">
+      <header className="max-w-4xl mx-auto text-center mb-8">
+        <h1 className="text-4xl font-bold text-gray-800 mb-2">
+          User Management System
         </h1>
-        <p className="text-gray-600 mt-2">Manage and view your users easily</p>
+        <p className="text-gray-600">
+          View and manage all users in a clean, modern interface
+        </p>
       </header>
-      <Users />
+
+      <main className="max-w-6xl mx-auto">
+        <Users />
+      </main>
     </div>
   );
 }
