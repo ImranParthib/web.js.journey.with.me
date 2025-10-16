@@ -1,4 +1,4 @@
-const Card = ({ users }) => {
+const Card = ({ users, onDelete, onEdit }) => {
   return (
     <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-6">
       {users.map((user) => (
@@ -9,7 +9,21 @@ const Card = ({ users }) => {
           <h3 className="text-lg font-semibold text-gray-800 mb-2">
             {user.name}
           </h3>
-          <p className="text-gray-500">{user.role}</p>
+          <p className="text-gray-500 mb-4">{user.role}</p>
+          <div className="flex justify-center gap-2">
+            <button
+              onClick={() => onEdit(user)}
+              className="bg-yellow-300 p-1 px-3 rounded hover:bg-yellow-400"
+            >
+              Edit
+            </button>
+            <button
+              onClick={() => onDelete(user.id)}
+              className="bg-red-300 p-1 px-3 rounded hover:bg-red-400"
+            >
+              Delete
+            </button>
+          </div>
         </div>
       ))}
     </div>
