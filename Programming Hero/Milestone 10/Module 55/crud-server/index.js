@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const { MongoClient, ServerApiVersion } = require("mongodb");
+const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 
 // App configuration
 const app = express();
@@ -61,6 +61,33 @@ app.post("/users", async (req, res) => {
   } catch (error) {
     console.error("Error adding user:", error);
     res.status(500).json({ error: "Failed to add user" });
+  }
+});
+
+// ✅ Delete: delele a user
+app.delete("/users/:id", async (req, res) => {
+  try {
+    // 1. Get the ID from URL parameter
+    const userId = req.params.id;
+
+    // 2. Get the users collection
+    const usersCollection = client.db("crudDB").collection("users");
+
+    // 3. Delete the user (you'll need ObjectId here)
+    const result = await usersCollection.deleteOne({
+      _id: new ObjectId(userId),
+    });
+
+    // 4. Check if user was found and deleted
+    if (result.deletedCount === 0) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // 5. Return success response
+    res.json({ message: "✅ User deleted successfully!" });
+  } catch (error) {
+    console.error("Error deleting user:", error);
+    res.status(500).json({ error: "Failed to delete user" });
   }
 });
 

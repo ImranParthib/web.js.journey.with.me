@@ -1,23 +1,9 @@
-import { useState, useEffect } from "react";
 import UserCard from "./UserCard";
+import { useUsers } from "../hooks/useUsers";
 
 const Users = () => {
-  const [users, setUsers] = useState([]);
-
-  // Fetch users once on mount
-  useEffect(() => {
-    fetchUsers();
-  }, []);
-
-  const fetchUsers = async () => {
-    try {
-      const res = await fetch("http://localhost:3000/users");
-      const data = await res.json();
-      setUsers(data);
-    } catch (err) {
-      console.error("Error fetching users:", err);
-    }
-  };
+  // Get users and functions from context
+  const { addUser } = useUsers();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,20 +12,7 @@ const Users = () => {
     const user = { name, email };
 
     try {
-      const res = await fetch("http://localhost:3000/users", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(user),
-      });
-
-      if (!res.ok) {
-        throw new Error(`HTTP error! status: ${res.status}`);
-      }
-
-      const data = await res.json();
-
-      // Update users state with the returned user object
-      setUsers((prev) => [...prev, data.user]);
+      await addUser(user);
       e.target.reset();
     } catch (err) {
       console.error("Error creating user:", err);
@@ -87,8 +60,8 @@ const Users = () => {
         </button>
       </form>
 
-      {/* Pass users state to UserCard */}
-      <UserCard users={users} />
+      {/* UserCard now uses context, no props needed */}
+      <UserCard />
     </div>
   );
 };
