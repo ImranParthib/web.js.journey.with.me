@@ -46,9 +46,17 @@ app.post("/users", async (req, res) => {
     }
 
     const result = await usersCollection.insertOne(newUser);
+
+    // Return the complete user object with the MongoDB _id
+    const createdUser = {
+      _id: result.insertedId,
+      name: newUser.name,
+      email: newUser.email,
+    };
+
     res.status(201).json({
       message: "✅ User added successfully!",
-      userId: result.insertedId,
+      user: createdUser,
     });
   } catch (error) {
     console.error("Error adding user:", error);
@@ -77,4 +85,3 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
   console.log(`🌍 Server running on port ${PORT}`);
 });
- 

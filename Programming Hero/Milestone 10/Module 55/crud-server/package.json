@@ -1,13 +1,14 @@
 {
   "name": "crud-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "CRUD API server with MongoDB",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node index.js",
+    "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": ["api", "crud", "mongodb", "express"],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
@@ -15,7 +16,9 @@
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
-    "mongodb": "^6.20.0",
+    "mongodb": "^6.20.0"
+  },
+  "devDependencies": {
     "nodemon": "^3.1.10"
   }
 }

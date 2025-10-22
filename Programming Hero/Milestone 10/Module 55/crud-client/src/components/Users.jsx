@@ -31,10 +31,15 @@ const Users = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(user),
       });
+
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+      }
+
       const data = await res.json();
 
-      // Update users state immediately
-      setUsers((prev) => [...prev, data]);
+      // Update users state with the returned user object
+      setUsers((prev) => [...prev, data.user]);
       e.target.reset();
     } catch (err) {
       console.error("Error creating user:", err);
