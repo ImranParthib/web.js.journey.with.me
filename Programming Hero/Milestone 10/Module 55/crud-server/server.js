@@ -10,7 +10,7 @@ async function startServer() {
   try {
     // Connect to database
     await database.connect();
-    
+
     // Start Express server
     app.listen(PORT, () => {
       console.log(`🌍 Server running on port ${PORT}`);

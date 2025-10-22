@@ -17,8 +17,8 @@ app.get("/", (req, res) => {
     version: "1.0.0",
     endpoints: {
       users: "/users",
-      health: "/health"
-    }
+      health: "/health",
+    },
   });
 });
 
@@ -27,7 +27,7 @@ app.get("/health", (req, res) => {
   res.json({
     status: "OK",
     timestamp: new Date().toISOString(),
-    uptime: process.uptime()
+    uptime: process.uptime(),
   });
 });
 

@@ -9,7 +9,7 @@ class Database {
   async connect() {
     try {
       const MONGO_URI = process.env.MONGO_URI;
-      
+
       if (!MONGO_URI) {
         throw new Error("MONGO_URI is not defined in environment variables");
       }
@@ -24,10 +24,10 @@ class Database {
 
       await this.client.connect();
       await this.client.db("admin").command({ ping: 1 });
-      
+
       this.db = this.client.db("crudDB");
       console.log("✅ Successfully connected to MongoDB Atlas!");
-      
+
       return this.db;
     } catch (error) {
       console.error("❌ MongoDB connection failed:", error);

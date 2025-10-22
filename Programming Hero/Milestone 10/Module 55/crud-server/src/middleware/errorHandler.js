@@ -16,7 +16,9 @@ const errorHandler = (err, req, res, next) => {
 
   // MongoDB validation error
   if (err.name === "ValidationError") {
-    error.message = Object.values(err.errors).map((val) => val.message).join(", ");
+    error.message = Object.values(err.errors)
+      .map((val) => val.message)
+      .join(", ");
     error.status = 400;
   }
 
